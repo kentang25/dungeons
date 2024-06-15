@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends BackendController {
+class Dashboard extends BackendController {
 	//
     public $CI;
 
@@ -25,6 +25,7 @@ class Admin extends BackendController {
         $CI =& get_instance();
 
         $this->load->model('M_data_barang');
+        $this->load->model('M_auth');
         
     }
 
@@ -38,6 +39,11 @@ class Admin extends BackendController {
 	
     public function index()
     {
+
+        if(!$this->M_auth->is_Loggedin()){
+            redirect('halaman-login');
+        }
+
         $this->data['data_barang'] = $this->M_data_barang->tampil_data()->result();
         $this->template_admin('v_dashboard',$this->data,true);
     }

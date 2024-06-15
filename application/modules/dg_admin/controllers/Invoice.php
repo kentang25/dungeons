@@ -25,7 +25,7 @@ class Invoice extends BackendController {
         $CI =& get_instance();
 
         $this->load->model('M_invoice');
-        // $this->load->model('M_news');
+        $this->load->model('M_auth');
         // $this->load->model('M_gallery');
     }
 
@@ -37,6 +37,11 @@ class Invoice extends BackendController {
      * @return [type] [description]
      */
 	public function index() {
+
+        if(!$this->M_auth->is_Loggedin()){
+            redirect('halaman-login');
+        }
+        
 		$this->data['invoice'] = $this->M_invoice->tampil_data();
         $this->template_admin('v_invoice', $this->data,true);
 	}

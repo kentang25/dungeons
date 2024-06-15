@@ -34,6 +34,7 @@
 					<div align="right">
 						<a href="<?= base_url('shop') ?>"><div class="btn btn-sm btn-danger mr-2">Kemabli</div></a>
 						<?= anchor('keranjang/'. $dtl->id , '<div class="btn btn-sm btn-primary">Tambah Keranjang</div> ') ?>
+						<a href="<?= base_url('pembayaran') ?>"><div class="btn btn-sm btn-success">Beli</div></a>
 					</div>
 				</div>
 			</div>

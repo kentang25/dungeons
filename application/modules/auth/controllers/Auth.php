@@ -57,7 +57,7 @@ class Auth extends BackendController {
     {
 
         if($this->M_auth->is_Loggedin()){
-            redirect('dashboard');
+            redirect('admin');
         }
 
         $this->form_validation->set_rules('username','Username','required');
@@ -81,7 +81,7 @@ class Auth extends BackendController {
                     $_SESSION['logged_in']  = TRUE;
 
                     // --- redirect ---
-                    redirect('dashboard');
+                    redirect('admin');
                 }
             }
     }

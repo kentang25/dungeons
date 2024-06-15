@@ -97,3 +97,4 @@ $route['keranjang/hapus']	= 'dungeons/dashboard/hapus_keranjang';
 
 $route['pembayaran'] = 'dungeons/dashboard/pembayaran';
 $route['proses-pembayaran'] = 'dungeons/dashboard/proses_pembayaran';
+

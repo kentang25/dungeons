@@ -25,7 +25,7 @@ class Data_barang extends BackendController {
         $CI =& get_instance();
 
         $this->load->model('M_data_barang');
-        // $this->load->model('M_news');
+        $this->load->model('M_auth');
         // $this->load->model('M_gallery');
     }
 
@@ -39,6 +39,10 @@ class Data_barang extends BackendController {
 	
     public function index()
     {
+        if(!$this->M_auth->is_Loggedin()){
+            redirect('halaman-login');
+        }
+        
         $this->data['data_barang'] = $this->M_data_barang->tampil_data()->result();
         $this->template_admin('v_data_barang', $this->data,true);
     }
