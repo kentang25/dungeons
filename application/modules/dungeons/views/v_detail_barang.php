@@ -32,9 +32,9 @@
 					</table>
 
 					<div align="right">
-						<a href="<?= base_url('shop') ?>"><div class="btn btn-sm btn-danger mr-2">Kemabli</div></a>
+						<a href="<?= base_url('shop') ?>"><div class="btn btn-sm btn-danger mr-2">Kembali</div></a>
 						<?= anchor('keranjang/'. $dtl->id , '<div class="btn btn-sm btn-primary">Tambah Keranjang</div> ') ?>
-						<a href="<?= base_url('pembayaran') ?>"><div class="btn btn-sm btn-success">Beli</div></a>
+						<?= anchor('beli/'. $dtl->id, '<div class="btn btn-sm btn-success">Beli</div> ') ?>
 					</div>
 				</div>
 			</div>

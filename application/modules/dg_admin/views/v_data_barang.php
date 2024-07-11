@@ -12,14 +12,29 @@
 
 		<?php
 
-			$no = 1;
+			
+				// var_dump($barang);
 
-			foreach($data_barang as $d_brg) :
+			// if(!empty($barang)) : $no = $page-1;
+		$d = $this->uri->segment(4);
+			 foreach($barang as $asu => $d_brg) :
+
+
+
+
 
 		?>
 
 		<tr>
-			<td><?= $no++ ?></td>
+			<td><?php
+
+				if(!empty($this->uri->segment(4))){
+					echo $d+=1;
+				}else{
+					echo $asu+1;
+				}
+
+			 ?></td>
 			<td><?= $d_brg->nama_brg ?></td>
 			<td><?= $d_brg->keterangan ?></td>
 			<td><?= $d_brg->kategori ?></td>
@@ -28,8 +43,13 @@
 			<td><?= anchor('admin/data-barang/detail/'. $d_brg->id,'<div class="btn btn-danger"><i class="fa fa-search"></i></div>'); ?></td>
 		</tr>
 
-		<?php endforeach; ?>
+		<?php endforeach; 
+
+		// endif;
+		 ?>
 	</table>
+
+	<?= $this->pagination->create_links(); ?>
 
 	<!-- Modal -->
 	<div class="modal fade" id="modal_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -3,19 +3,25 @@
 
 		<table class="table table-bordered">
 			<tr>
-				<td><?= $detail->nama_brg ?></td>
+				<th>Nama Barang</th>
+				<th><?= $detail->nama_brg ?></th>
+			</tr>
+				
+			<tr>
+				<th>Keterangan</th>
+				<th><?= $detail->keterangan ?></th>
 			</tr>
 			<tr>
-				<td><?= $detail->keterangan ?></td>
+				<th>Kategori</th>
+				<th><?= $detail->kategori ?></th>
 			</tr>
 			<tr>
-				<td><?= $detail->kategori ?></td>
+				<th>Stok</th>
+				<th><?= $detail->stok ?></th>
 			</tr>
 			<tr>
-				<td><?= $detail->stok ?></td>
-			</tr>
-			<tr>
-				<td><?= $detail->harga ?></td>
+				<th>Harga</th>
+				<th><?= $detail->harga ?></th>
 			</tr>
 		</table>
 

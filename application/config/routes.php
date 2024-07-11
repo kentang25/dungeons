@@ -57,10 +57,13 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'dg_admin/dashboard';
 $route['admin/data-barang'] = 'dg_admin/data_barang';
 $route['admin/invoices'] = 'dg_admin/invoice';
+$route['admin/search'] = 'dg_admin/search';
 
 $route['admin/data-barang/edit/(:num)'] 	= 'dg_admin/data_barang/edit/$1';
 $route['admin/data-barang/delete/(:num)'] 	= 'dg_admin/data_barang/delete/$1';
 $route['admin/data-barang/detail/(:num)'] 	= 'dg_admin/data_barang/detail/$1';
+
+$route['admin/invoices/detail/(:num)']	= 'dg_admin/invoice/detail/$1';
 // --- Auth ---
 
 $route['halaman-register'] 	= 'auth/register';
@@ -96,5 +99,6 @@ $route['keranjang/hapus']	= 'dungeons/dashboard/hapus_keranjang';
 // --- pembayaran ---
 
 $route['pembayaran'] = 'dungeons/dashboard/pembayaran';
+$route['beli/(:num)'] = 'dungeons/dashboard/beli/$1';
 $route['proses-pembayaran'] = 'dungeons/dashboard/proses_pembayaran';
 

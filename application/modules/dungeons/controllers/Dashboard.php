@@ -77,7 +77,7 @@ class Dashboard extends FrontendController {
         );
 
         $this->cart->insert($data);
-        redirect('dashboard');
+        redirect('shop');
     }
 
     public function detail_keranjang()
@@ -99,11 +99,28 @@ class Dashboard extends FrontendController {
         $this->template_user('v_pembayaran', $this->data,true);
     }
 
+    public function beli($id)
+    {
+        $this->data['beli'] = $this->M_barang->detail_barang($id);
+
+        $this->template_user('v_beli',$this->data,true);
+    }
+
     public function proses_pembayaran()
     {
         $is_processed = $this->M_invoice->index();
             if($is_processed){
                 $this->cart->destroy();
+                $this->template_user('v_proses_pembayaran', $this->data,true);
+            }else{
+                echo "Maaf,pesanan anda gagal diproses";
+            }
+    }
+
+    public function proses_pembayaran_2()
+    {
+        $is_processed = $this->M_invoice->langsung_beli();
+            if($is_processed){
                 $this->template_user('v_proses_pembayaran', $this->data,true);
             }else{
                 echo "Maaf,pesanan anda gagal diproses";

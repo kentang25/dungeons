@@ -10,6 +10,18 @@
 			return $query;
 		}
 
+		public function get_count()
+		{
+			$query = $this->db->get('tb_barang');
+			return $query->num_rows();
+		}
+
+		public function get($start = null,$limit = null)
+		{
+			$query = $this->db->get('tb_barang',$start,$limit);
+			return $query->result();
+		}
+
 		public function insert_data()
 		{
 			$nama_brg 	= $this->input->post('nama_brg');
@@ -90,6 +102,19 @@
 		{
 			$query = $this->db->get_where('tb_barang', array('id'=>$id))->row();
 			return $query;
+		}
+
+		// --- Search ---
+
+		public function get_search($keyword)
+		{
+			$this->db->select('*');
+			$this->db->from('tb_barang');
+			$this->db->like('nama_brg',$keyword);
+			$this->db->or_like('keterangan',$keyword);
+			$this->db->or_like('kategori',$keyword);
+
+				return $this->db->get()->result();
 		}
 
 	}

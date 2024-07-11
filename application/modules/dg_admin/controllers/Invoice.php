@@ -46,4 +46,11 @@ class Invoice extends BackendController {
         $this->template_admin('v_invoice', $this->data,true);
 	}
 
+    public function detail($id_inv = TRUE)
+    {
+        $this->data['detail_invoice'] = $this->M_invoice->get_id($id_inv);
+
+            $this->template_admin('v_detail_invoice', $this->data,true);
+    }
+
 }

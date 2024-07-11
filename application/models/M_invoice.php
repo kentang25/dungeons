@@ -49,9 +49,43 @@
 					return TRUE;
 		}
 
+		public function langsung_beli()
+		{
+			date_default_timezone_get('Asia/Kediri');
+
+			$nama 	= $this->input->post('nama');
+			$alamat	= $this->input->post('alamat');
+
+				foreach($beli as $bl){
+					$langsung_beli = array(
+
+						'nama'		=> $nama,
+						'alama'		=> $alamat,
+						'tgl_pesan'		=> date('Y-m-d H:i:s'),
+						'batas_bayar'	=> date('Y-m-d H:i:s', mktime(date('H'),date('i'),date('s'),date('m'),date('d') + 1,date('Y'))),
+						'nama_brg' 	=> $bl['nama_brg'],
+						'harga'		=> $bl['harga'],
+					);
+
+					$query = $this->db->insert('tb_invoice',$langsung_beli);
+					return $query;
+					$id_invoice = $this->db->insert_id();
+				}
+		}
+
 		public function tampil_data()
 		{
 			$result = $this->db->get('tb_invoice');
+			if($result->num_rows() > 0){
+				return $result->result();
+			}else{
+				return FALSE;
+			}
+		}
+
+		public function get_id($id_inv)
+		{
+			$result = $this->db->where('id',$id_inv)->limit(1)->get('tb_invoice');
 			if($result->num_rows() > 0){
 				return $result->result();
 			}else{

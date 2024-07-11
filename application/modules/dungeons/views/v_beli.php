@@ -5,23 +5,14 @@
 		<div class="col-2"></div>
 		<div class="col-8">
 			<div class="btn btn-sm btn-success mt-3">
-				<?php
-
-					$grand_total = 0;
-
-					if($keranjang = $this->cart->contents()){
-						foreach($keranjang as $item){
-							$grand_total = $grand_total + $item['subtotal'];
-						}
-						echo "<h5>Total Belanja Anda : Rp .". number_format($grand_total,0,',','.');
-					
-
-				?>
-				</div>
-					<div class="card mt-3 mb-4">
+			<?php foreach($beli as $bl) : ?>
+				<h4>Harga Barang Rp. <?= number_format($bl->harga,0,',','.') ?> </h4>
+			<?php endforeach; ?>
+			</div>
+			<div class="card mt-3 mb-4">
 					  <h3 class="card-header">Input Alamat Dan Pembayaran</h3>
 					   <div class="card-body">
-						<form method="POST" action="<?= site_url('proses-pembayaran') ?>">
+						<form method="POST" action="<?= base_url('proses-pembayaran') ?>">
 
 							<label>Nama Lengkap</label>
 								<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap"><br>
@@ -52,12 +43,13 @@
 
 							<button type="submit" class="btn btn-sm btn-primary mb-4">Pesan</button>
 						</form>
-					<?php } else{
-						echo "Keranjang Anda Masih Kosong";
-					} ?>
+					
 				 </div>
 				</div>
-			</div>
 		</div>
+	</div>
+
+
+
 </div>
 </div>
