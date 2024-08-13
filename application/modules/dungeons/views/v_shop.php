@@ -7,7 +7,7 @@
 			    <h5 class="card-title mb-1"><?= $brg->nama_brg ?></h5>
 			    <span class="badge badge-pill text-bg-success mb-3">Rp. <?= number_format($brg->harga,0,',','.') ?></span> <br>
 
-			    <?= anchor('detail-barang/'. $brg->id , '<div class="btn btn-sm btn-warning">Detail</div> '); ?>
+			    <?= anchor('detail-barang/'. $brg->id_brg , '<div class="btn btn-sm btn-warning">Detail</div> '); ?>
 			    
 			    
 			  </div>

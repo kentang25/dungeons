@@ -16,6 +16,8 @@
 			$total = 0;
 			foreach($detail_invoice as $dtl_inv) :
 				$subtotal = $dtl_inv->jumlah * $dtl_inv->harga;
+				// var_dump($subtotal);
+				// exit();
 				$total += $subtotal;
 
 		?>
@@ -35,4 +37,5 @@
 			<td align="right"><?= number_format($total,0,',','.') ?></td>
 		</tr>
 	</table>
+	<a href="<?= base_url('admin/invoices') ?>"><button class="btn btn-sm btn-danger">Kembali</button></a>
 </div>

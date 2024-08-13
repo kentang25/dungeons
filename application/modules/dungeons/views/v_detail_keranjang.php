@@ -12,7 +12,13 @@
 		</tr>
 		<?php
 			$no = 1;
-			foreach($this->cart->contents() as $items) : 
+			if($contents = $this->cart->contents()) {
+				foreach($contents as $items){
+
+
+			
+			
+			
 		?>
 		<tr>
 			<td><?= $no++ ?></td>
@@ -21,7 +27,16 @@
 			<td align="right">Rp.<?= number_format($items['price'],0,',','.') ?></td>
 			<td align="right">Rp.<?= number_format($items['subtotal'],0,',','.') ?></td>
 		</tr>
-		<?php endforeach; ?>
+
+		<?php } ?>
+
+		 <?php
+
+		 }else{ ?>
+		 	<td colspan="5" align="center"><strong>Keranjang Kosong</strong></td>
+		 <?php }
+
+		 ?>
 
 		<tr>
 			<td colspan="4" align="center"><bold>Total</bold></td>

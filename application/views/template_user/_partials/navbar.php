@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand text-main" href="#">Dungeons</a>
+    <a class="navbar-brand text-main" href="<?= base_url('dashboard') ?>">Dungeons</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,6 +28,7 @@
         </li>
       </ul>
 
+      
       <div class="navbar">
           <ul class="nav navbar-nav navbar-right">
             <li><?php $keranjang = '<div class="btn btn-warning"><i class="fa fa-shopping-cart"></i> '. $this->cart->total_items(). ' items </div>' ?>

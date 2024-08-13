@@ -18,7 +18,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Form Register</h1>
                                     </div>
                                     <?= $this->session->flashdata('pesan'); ?>
-                                    <form method="POST" action="<?= base_url('halaman-register'); ?>" class="user">
+                                    <form method="POST" action="<?= base_url('admin/halaman-register'); ?>" class="user">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 placeholder="Username">

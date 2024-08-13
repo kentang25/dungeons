@@ -12,7 +12,7 @@
 
 		public function detail_barang($id)
 		{
-			$query = $this->db->where('id',$id)->get('tb_barang');
+			$query = $this->db->where('id_brg',$id)->get('tb_barang');
 			if($query->num_rows() > 0){
 				return $query->result();
 			}else{
@@ -34,9 +34,9 @@
 			return $this->db->get()->result();
 		}
 
-		public function find($id)
+		public function find($id_brg)
 		{
-			$result = $this->db->where('id',$id)
+			$result = $this->db->where('id_brg',$id_brg)
 							   ->limit(1)
 							   ->get('tb_barang');
 			if($result->num_rows() > 0){

@@ -17,8 +17,8 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Form Register</h1>
                                     </div>
-                                    <?= $this->session->flashdata('pesan'); ?>
-                                    <form method="POST" action="<?= base_url('admin/halaman-login'); ?>" class="user">
+                                    
+                                    <form method="POST" action="<?= base_url('halaman-register'); ?>" class="user">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 placeholder="Username">
@@ -29,7 +29,11 @@
                                                 placeholder="Password">
                                         </div>
                                         <?= form_error('password', '<div class="text-danger small ml-2 mb-2">','</div>') ?>
-                                        
+                                        <div class="form-group">
+                                            <input type="password" name="password2" class="form-control form-control-user"
+                                                placeholder="Konfirmasi Password">
+                                        </div>
+                                        <?= form_error('password2', '<div class="text-danger small ml-2 mb-2">','</div>') ?>
                                         <button type="submit" class="btn btn-primary form-control">Login</button>
                                         
                                     </form>

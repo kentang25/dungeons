@@ -26,7 +26,7 @@ class Dashboard extends FrontendController {
 
         $this->load->model('M_barang');
         $this->load->model('M_invoice');
-        // $this->load->model('M_gallery');
+        $this->load->model('M_auth_user');
     }
 
     /**
@@ -39,6 +39,11 @@ class Dashboard extends FrontendController {
 	
     public function index()
     {
+
+        if(!$this->M_auth_user->is_Loggedin()){
+            redirect('halaman-login');
+        }
+
         $this->data['barang'] = $this->M_barang->tampil_data()->result();
         $this->template_user('v_dashboard', $this->data,true);
     }
@@ -63,20 +68,32 @@ class Dashboard extends FrontendController {
         $keyword = $this->input->post('keyword');
         $this->data['barang'] = $this->M_barang->get_keyword($keyword);
 
-            $this->template_user('v_shop', $this->data,true);
+            if(empty($this->data['barang'])){
+                $this->template_user('v_404', $this->data,true);
+            }else{
+                $this->template_user('v_shop', $this->data,true);
+            }
     }
 
-    public function keranjang($id){
-        $barang = $this->M_barang->find($id);
+    public function keranjang($id_brg){
+        $barang = $this->M_barang->find($id_brg);
+        $qty = 1;
+
+        if($this->input->post('qty')){
+            $qty = $this->input->post('qty');
+
+        }
+            // var_dump($qty);
+            // exit();
 
         $data = array(
-                'id'    => $barang->id,
-                'qty'   => 1,
+                'id'    => $barang->id_brg,
+                'qty'   => $qty,
                 'price' => $barang->harga,
                 'name'  => $barang->nama_brg,
         );
 
-        $this->cart->insert($data);
+        $this->db->insert('tb_cart',$data);
         redirect('shop');
     }
 
@@ -88,7 +105,7 @@ class Dashboard extends FrontendController {
     public function hapus_keranjang()
     {
         $this->cart->destroy();
-        redirect('dashboard');
+        redirect('shop');
     }
     
 
@@ -117,14 +134,5 @@ class Dashboard extends FrontendController {
             }
     }
 
-    public function proses_pembayaran_2()
-    {
-        $is_processed = $this->M_invoice->langsung_beli();
-            if($is_processed){
-                $this->template_user('v_proses_pembayaran', $this->data,true);
-            }else{
-                echo "Maaf,pesanan anda gagal diproses";
-            }
-    }
 
 }

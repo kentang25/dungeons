@@ -49,7 +49,7 @@ class Auth extends BackendController {
                 // --- insert data ---
                 $data = $this->M_auth->insert_data();
                 // --- redirect ---
-                redirect('halaman-login');
+                redirect('admin/halaman-login');
             }
     }
 
@@ -74,10 +74,12 @@ class Auth extends BackendController {
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>');
 
-                    redirect('halaman-login');
+                    redirect('admin/halaman-login');
                 }else{
                     // --- session ---
-                    $_SESSION['user_id']    = $auth['id'];
+                    $_SESSION['user_id']    = $data['id'];
+                    var_dump($_SESSION['user_id']);
+                    exit();
                     $_SESSION['logged_in']  = TRUE;
 
                     // --- redirect ---

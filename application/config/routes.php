@@ -64,10 +64,16 @@ $route['admin/data-barang/delete/(:num)'] 	= 'dg_admin/data_barang/delete/$1';
 $route['admin/data-barang/detail/(:num)'] 	= 'dg_admin/data_barang/detail/$1';
 
 $route['admin/invoices/detail/(:num)']	= 'dg_admin/invoice/detail/$1';
+
 // --- Auth ---
 
-$route['halaman-register'] 	= 'auth/register';
-$route['halaman-login'] 	= 'auth/login';
+$route['admin/halaman-register'] 	= 'auth/register';
+$route['admin/halaman-login'] 	= 'auth/login';
+
+// --- Auth-User ---
+
+$route['halaman-register'] = 'dungeons/auth_user/register';
+$route['halaman-login'] = 'dungeons/auth_user/login';
 
 // --- Dungeons ---
 $route['dashboard']		= 'dungeons/dashboard';
@@ -80,7 +86,7 @@ $route['categories/cassette']		= 'kategori/kaset';
 
 // --- detail barang ---
 
-$route['detail-barang/(:num)']		= 'dungeons/dashboard/detail/$1';
+$route['detail-barang/(:num)']		= 'dungeons/cart/detail/$1';
 
 // --- shop ---
 
@@ -92,8 +98,13 @@ $route['search'] = 'dungeons/dashboard/search';
 
 // --- keranjang ---
 
-$route['keranjang/(:num)'] 	= 'dungeons/dashboard/keranjang/$1';
-$route['keranjang/detail']	= 'dungeons/dashboard/detail_keranjang';
+$route['keranjang'] 	= 'dungeons/cart';
+$route['tambah-keranjang/(:num)'] = 'dungeons/cart/addCart/$1';
+$route['contents-keranjang'] = 'dungeons/cart/contents';
+
+// $route['keranjang/(:num)'] 	= 'dungeons/dashboard/keranjang/$1';
+// $route['keranjang/detail']	= 'dungeons/dashboard/detail_keranjang';
+$route['keranjang/detail']	= 'dungeons/cart/view_cart';
 $route['keranjang/hapus']	= 'dungeons/dashboard/hapus_keranjang';
 
 // --- pembayaran ---
