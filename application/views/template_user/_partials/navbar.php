@@ -14,10 +14,10 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle secondary-col text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Kategori
+            Kategorii
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= base_url('categories/pakaian-pria') ?>">T-shirt</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('categories/pakaian-pria') ?>">pakaian</a></li>
             <li><a class="dropdown-item" href="<?= base_url('categories/shoes') ?>">Shoes</a></li>
             <li><a class="dropdown-item" href="<?= base_url('categories/cassette') ?>">Cassette</a></li>
             <li><a class="dropdown-item" href="<?= base_url('categories/accessories') ?>">Accessories</a></li>
