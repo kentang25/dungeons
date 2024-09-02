@@ -29,21 +29,42 @@
 			return $query->result();
 		}
 
+		// public function get_id_item($id_user)
+		// {
+		// 	$this->db->where('id_user',$id_user);
+		// 	$query = $this->db->get('tb_cart');
+		// 	return $query->row();
+		// }
+
 		public function clear_cart_item($id_user)
 		{
 			$this->db->where('id_user',$id_user);
-			$this->db->delete('tb_cart');
+			return $this->db->delete('tb_cart');
 		}
 
-		public function total_cart_all()
-		{
-			$query = $this->db->get('tb_cart');
+		// --- belum selesai ---
+		// public function total_cart_all($id_user)
+		// {
+		// 	$this->db->where('id_user',$id_user);
+		// 	$query = $this->db->count_all_results('tb_cart');
 
-				if($query->num_rows() > 0){
-					return $query->num_rows;
-				}else{
-					return false;
+		// 		// var_dump($query);
+		// 		// exit();
+		// 		return $query;
+		// }
+
+		
+
+		public function calculate_cart_subtotal($id_user)
+		{
+			$cart_items = $this->get_cart_item($id_user);
+			$subtotal 	= 0;
+
+				foreach($cart_items as $key => $items){
+					$subtotal += $items->qty * $items->price;
 				}
+
+				return $subtotal;
 		}
 
 		// public function update_cart($rowid,$qty)

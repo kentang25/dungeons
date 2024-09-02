@@ -25,8 +25,10 @@ class Dashboard extends FrontendController {
         $CI =& get_instance();
 
         $this->load->model('M_barang');
+        $this->load->model('M_cart');
         $this->load->model('M_invoice');
         $this->load->model('M_auth_user');
+
     }
 
     /**
@@ -111,10 +113,6 @@ class Dashboard extends FrontendController {
 
     // --- Pembayaran ----
 
-    public function pembayaran()
-    {
-        $this->template_user('v_pembayaran', $this->data,true);
-    }
 
     public function beli($id)
     {
@@ -125,13 +123,9 @@ class Dashboard extends FrontendController {
 
     public function proses_pembayaran()
     {
-        $is_processed = $this->M_invoice->index();
-            if($is_processed){
-                $this->cart->destroy();
+
                 $this->template_user('v_proses_pembayaran', $this->data,true);
-            }else{
-                echo "Maaf,pesanan anda gagal diproses";
-            }
+            
     }
 
 

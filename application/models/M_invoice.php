@@ -4,8 +4,16 @@
 		public function index()
 		{
 			date_default_timezone_get('Asia/Kediri');
-			$nama 	= $this->input->post('nama');
-			$alamat	= $this->input->post('alamat');
+			
+
+			
+
+			
+
+			
+
+            $query = $this->db->insert('tb_invoice',$transaksi);
+            return $query;
 
 			foreach($this->cart->contents() as $item){
 
@@ -16,10 +24,11 @@
 					'tgl_pesan'		=> date('Y-m-d H:i:s'),
 					'batas_bayar'	=> date('Y-m-d H:i:s', mktime(date('H'),date('i'),date('s'),date('m'),date('d') + 1,date('Y'))),
 					'nama_brg'		=> $item['name'],
-					'id'			=> $item['id'],
+					'id_brg'		=> $item['id'],
 					'jumlah'		=> $item['qty'],
 					'harga'			=> $item['price']
 				);
+
 
 
 				$query = $this->db->insert('tb_invoice',$invoice);
@@ -27,6 +36,9 @@
 				$id_invoice = $this->db->insert_id();
 
 			}
+
+
+
 
 					// foreach($this->cart->contents() as $item){
 					// 	$data = array(

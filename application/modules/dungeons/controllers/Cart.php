@@ -48,6 +48,8 @@ class Cart extends FrontendController {
         $this->template_user('v_detail_barang',$this->data,true);
     }
 
+    // --- add cart ---
+
 	public function addCart($id_brg){
         $barang = $this->M_barang->find($id_brg);
         if($this->input->post('qty')){
@@ -63,43 +65,58 @@ class Cart extends FrontendController {
         // insert data into the cart(session)
         $this->cart->insert($data);
 
-        $get_id_user = $this->session->userdata('id_user');
+        $get_id = $this->M_auth_user->get_id_user();
 
         $cart_data = array(
                 'id_brg'    => $data['id'],
-                'id_user'   => $get_id_user, 
+                'id_user'   => $get_id, 
                 'qty'       => $data['qty'],
                 'price'     => $data['price'],
                 'name'      => $data['name']
             );
 
         if($this->M_cart->insert_cart($cart_data)){
-            echo "Item added to cart and saved in the database successfully!";
+            redirect('keranjang/detail');
         }else{
             echo "gagal!";
         }
 
 
         // $this->M_cart->insert_keranjang();
-        echo $this->show_cart();
+        // echo $this->show_cart();
         // echo json_encode(array('status' => 'success', 'message' => 'Item added to cart'));
 
 	}
 
     public function view_cart()
     {
-        $get_id_user = $this->session->userdata('id_user');
+        $get_id = $this->M_auth_user->get_id_user();
 
-        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id_user);
+        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id);
 
-        $this->template_user('cart_shop/v_cart',$this->data,true);
+        $this->template_user('cart_shop/v_cart2',$this->data,true);
 
     }
 
-    public function total_cart()
+    
+
+    // --- belum selesai ---
+    // public function total_cart()
+    // {
+    //     $get_id = $this->M_auth_user->get_id_user();
+    //     $this->data['total_cart'] = $this->M_cart->total_cart_all($get_id);
+
+    //         $this->template_user('cart_shop/v_cart2',$this->data,true);
+    // }
+
+    public function pembayaran()
     {
-        $this->data['total_assets'] = $this->M_cart->total_cart_all();
+        $get_id = $this->M_auth_user->get_id_user();
+        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id);
+
+        $this->template_user('v_pembayaran', $this->data,true);
     }
+
 
     //  public function save() {
         

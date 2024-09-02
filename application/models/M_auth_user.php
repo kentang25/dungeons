@@ -35,6 +35,11 @@
 			}
 		}
 
+		public function get_id_user()
+		{
+			return $this->session->userdata('id_user');
+		}
+
 	}
 	
 ?>

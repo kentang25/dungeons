@@ -35,7 +35,7 @@
 						
 							<form method="POST" action="<?= base_url('tambah-keranjang/'.$dtl->id_brg) ?>">
 								<input type="number" name="qty" id="<?php echo $dtl->id_brg;?>" value="1" max="<?= $dtl->stok ?>" min="1" class="d-inline">
-								<button class="add_cart btn btn-sm btn-primary mr-2 mt-2" data-produkid="<?php echo $dtl->id_brg;?>" data-produknama="<?php echo $dtl->nama_brg;?>" data-produkharga="<?php echo $dtl->harga;?>">Tambah Keranjang</button>
+								<button class="add_cart btn btn-sm btn-primary mr-2 mt-2">Tambah Keranjang</button>
 							</form>
 							
 							<!-- <a href=""><div class="add_cart btn btn-sm btn-primary mr-2 mt-2">Tambah Keranjang</div></a> -->
