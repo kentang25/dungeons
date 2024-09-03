@@ -40,6 +40,14 @@
 			return $this->session->userdata('id_user');
 		}
 
+		public function id_user($id_user)
+		{
+			$query = $this->db->get_where('tb_auth_user',array('id_user'=>$id_user));
+			// $this->db->where('id_user',array());
+			// $query = $this->db->get('tb_auth_user');
+			return $query->row();
+		}
+
 	}
 	
 ?>

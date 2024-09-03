@@ -95,7 +95,7 @@
                   </div>
 
 
-                  <a href="<?= base_url('cart/pembayaran') ?>" ><button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
+                  <a href="<?= base_url('checkout/'.$c_items->id_user); ?>" ><button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
                     data-mdb-ripple-color="dark">CHECKOUT</button></a>
 
                 </div>

@@ -12,19 +12,21 @@
 					if($grand_total){
 						foreach($cart_item as $key => $c_items){
                   			$grand_total += $c_items->qty * $c_items->price;
+                  			// var_dump($grand_total);
+                  			// exit();
 						}
 						echo "<h5>Total Belanja Anda : Rp .". number_format($grand_total,0,',','.');
 					
-
 				?>
+
 				</div>
 					<div class="card mt-3 mb-4">
 					  <h3 class="card-header">Input Alamat Dan Pembayaran</h3>
 					   <div class="card-body">
-						<form method="POST" action="<?= site_url('transaksi') ?>">
+						<form method="POST" action="<?= base_url('proses-pembayaran') ?>">
 
 							<label>Nominal</label>
-								<input type="number" name="harga" class="form-control"><br>
+								<input type="number" name="harga" class="form-control" value="<?=number_format($grand_total,0,',','.') ?>"><br>
 
 							<!-- <label>Alamat Lengkap</label>
 								<input type="text" name="alamat" class="form-control" placeholder="Alamat Lengkap"><br>

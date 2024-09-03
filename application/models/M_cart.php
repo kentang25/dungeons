@@ -21,12 +21,25 @@
 			return $query;
 		}
 
+		// public function get_cart($id_user)
+		// {
+		// 	// var_dump($id_user);
+		// 	// exit();
+		// 	$query = $this->db->where('id_user',$id_user)
+		// 					  ->get('tb_cart');
+
+		// 	return $query;
+		// }
+
 		// ambil semua item untuk pengguna tertentu
 		public function get_cart_item($id_user)
 		{
-			$this->db->where('id_user',$id_user);
-			$query = $this->db->get('tb_cart');
-			return $query->result();
+			// var_dump($id_user);
+			// exit();
+			$query = $this->db->where('id_user',$id_user)
+							  ->get('tb_cart');
+
+			return $query;
 		}
 
 		// public function get_id_item($id_user)
@@ -57,7 +70,7 @@
 
 		public function calculate_cart_subtotal($id_user)
 		{
-			$cart_items = $this->get_cart_item($id_user);
+			$cart_items = $this->get_cart_item($id_user)->result();
 			$subtotal 	= 0;
 
 				foreach($cart_items as $key => $items){

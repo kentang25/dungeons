@@ -104,14 +104,15 @@ $route['contents-keranjang'] = 'dungeons/cart/contents';
 
 // $route['keranjang/(:num)'] 	= 'dungeons/dashboard/keranjang/$1';
 // $route['keranjang/detail']	= 'dungeons/dashboard/detail_keranjang';
-$route['keranjang/detail']	= 'dungeons/cart/view_cart';
+$route['keranjang/detail/(:any)']	= 'dungeons/cart/view_cart/$1';
 $route['keranjang/total']	= 'dungeons/cart/total_cart';
 $route['keranjang/hapus']	= 'dungeons/dashboard/hapus_keranjang';
 
 // --- pembayaran ---
 
-$route['cart/pembayaran'] = 'dungeons/cart/pembayaran';
-$route['transaksi'] = 'dungeons/pembayaran/transaksi';
+$route['checkout/(:any)'] = 'dungeons/pembayaran/checkout/$1';
+$route['cart/pembayaran/(:any)'] = 'dungeons/cart/pembayaran/$1';
+$route['transaksi/(:any)/(:any)'] = 'dungeons/pembayaran/transaksi/$1/$2';
 $route['beli/(:num)'] = 'dungeons/dashboard/beli/$1';
 $route['proses-pembayaran'] = 'dungeons/pembayaran/delete_data';
 

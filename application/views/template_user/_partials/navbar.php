@@ -31,7 +31,7 @@
       <div class="navbar">
           <ul class="nav navbar-nav navbar-right">
             <li><?php $keranjang = '<div class="btn btn-warning"><i class="fa fa-shopping-cart"></i> '. $this->cart->total_items(). ' items </div>' ?>
-                <?= anchor('keranjang/detail',  $keranjang); ?>
+                <?= anchor('keranjang/detail/7',  $keranjang); ?>
              </li>
            </ul>
       </div>

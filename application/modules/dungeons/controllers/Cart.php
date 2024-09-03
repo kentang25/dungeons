@@ -88,11 +88,14 @@ class Cart extends FrontendController {
 
 	}
 
-    public function view_cart()
+    public function view_cart($id_user)
     {
-        $get_id = $this->M_auth_user->get_id_user();
+        $where = array(
+            'id_user' => $id_user
+        );
+        $get_id = $this->M_auth_user->get_id_user($where);
 
-        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id);
+        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id)->result();
 
         $this->template_user('cart_shop/v_cart2',$this->data,true);
 
@@ -112,7 +115,7 @@ class Cart extends FrontendController {
     public function pembayaran()
     {
         $get_id = $this->M_auth_user->get_id_user();
-        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id);
+        $this->data['cart_item'] = $this->M_cart->get_cart_item($get_id)->result();;
 
         $this->template_user('v_pembayaran', $this->data,true);
     }
